@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Test from "./Test";
 import Home from "./Components/Home/Home";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import SearchResults from "./Components/Results/SearchResults";
 import NotFound from "./Components/Home/NotFound";
 import { Outlet } from "react-router";
@@ -11,7 +11,8 @@ import { useState } from "react";
 
 function App() {
 const [cards, setCards] = useState([])
-
+const [query, setQuery] = useState("");
+const queryUrl = `https://api.magicthegathering.io/v1/cards?name=${query}`;
   return (
     <div>
       <nav>
@@ -23,8 +24,9 @@ const [cards, setCards] = useState([])
         </Link>
       </nav>
       <Routes>
-        <Route path="/*" element={<Home setCards={setCards}/>} />
-        <Route path="/searchresults" element={<SearchResults />} />
+        <Route path="/" element={<Home setCards={setCards} query={query} setQuery={setQuery}/>} />
+        <Route path="/searchresults/:results" element={<SearchResults cards={cards} setCards={setCards} queryUrl={queryUrl} setQuery={setQuery}/>} />
+        
       </Routes>
     </div>
   );

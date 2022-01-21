@@ -1,21 +1,45 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+import {} from "react-router";
+import { NavLink, Outlet, useSearchParams, useParams } from "react-router-dom";
 
 const SearchResults = (props) => {
+  const [getStatus, setGetStatus] = useState("");
+  const filterNoImage = (item) => {
+    return item.hasOwnProperty("imageUrl");
+  };
+  useEffect(() => {
+    const makeApiCall = () => {
+      setGetStatus("Pending");
+      fetch(props.queryUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          setGetStatus("Completed");
+          props.setCards([
+            ...new Map(
+              data.cards
+                .filter(filterNoImage)
+                .map((item) => [item["name"], item])
+            ).values(),
+          ]);
+        })
+        .catch((error) => {
+          setGetStatus("Error");
+          console.error("Error:", error);
+        });
+    };
+    makeApiCall();
+  }, []);
 
-const test = () => console.log(props.cards)
+  const results = props.cards.map((item) => {
+    return (
+      <div className="card" key={item?.multiverseid}>
+        <img src={item?.imageUrl} />
+        {item?.name}
+      </div>
+    );
+  });
 
-  // const results = props.cards.map((item) => {
-  //   return (
-  //     <div className="card" key={item?.multiverseid}>
-  //       <img src={item?.imageUrl} />
-  //       {item?.name}
-  //     </div>
-  //   );
-  // });
-
-  return <div><button onClick={test}></button></div>;
+  return <div>{results}</div>;
 };
 
 export default SearchResults;
