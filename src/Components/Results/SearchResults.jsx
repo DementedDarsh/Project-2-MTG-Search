@@ -3,12 +3,15 @@ import {} from "react-router";
 import { NavLink, Outlet, useSearchParams, useParams } from "react-router-dom";
 
 const SearchResults = (props) => {
+  const { search } = useParams;
   const [getStatus, setGetStatus] = useState("");
   const filterNoImage = (item) => {
     return item.hasOwnProperty("imageUrl");
   };
   useEffect(() => {
+
     const makeApiCall = () => {
+      console.log(props.queryUrl)
       setGetStatus("Pending");
       fetch(props.queryUrl)
         .then((response) => response.json())

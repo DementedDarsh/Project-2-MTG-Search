@@ -4,31 +4,14 @@ import { useSearchParams, Outlet, Route, Routes, Link } from "react-router-dom";
 const BasicSearch = (props) => {
   const [getStatus, setGetStatus] = useState("");
   const [query, setQuery] = useState("");
-  const queryUrl = `https://api.magicthegathering.io/v1/cards?name=${query}`;
   const handleSearchInput = (event) => {
     props.setQuery(event.target.value);
+    console.log(props.queryUrl)
   };
   const filterNoImage = (item) => {
     return item.hasOwnProperty("imageUrl");
   };
 
-  // const onSubmit = () => {
-  //   setGetStatus("Pending");
-  //   fetch(queryUrl)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setGetStatus("Completed");
-  //       props.setCards([
-  //         ...new Map(
-  //           data.cards.filter(filterNoImage).map((item) => [item["name"], item])
-  //         ).values(),
-  //       ]);
-  //     })
-  //     .catch((error) => {
-  //       setGetStatus("Error");
-  //       console.error("Error:", error);
-  //     });
-  // };
   return (
     <div>
       <input
