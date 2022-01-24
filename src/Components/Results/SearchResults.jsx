@@ -35,14 +35,25 @@ const SearchResults = (props) => {
 
   const results = props.cards.map((item) => {
     return (
-      <div className="card" key={item?.multiverseid}>
-        <img src={item?.imageUrl} style={{height: "200px", }}/>
-        {item?.name}
-      </div>
+      <tr>
+      <td><img src={item?.imageUrl} /></td>
+      <td>{item?.name}</td>
+      <td>{item?.colors}</td>
+    </tr>
+      
+      // <div className="card" key={item?.multiverseid}>
+      //   <img src={item?.imageUrl} />
+      //   {item?.name}
+      // </div>
     );
   });
 
-  return <div>{results}</div>;
+  return <div><table>
+  <tr>
+    <th>Card Image</th>
+    <th>Card Name</th>
+    <th>Color(s)</th>
+  </tr>{results}</table></div>;
 };
 
 export default SearchResults;
