@@ -36,7 +36,7 @@ const SearchResults = (props) => {
   const results = props.cards.map((item) => {
     return (
       <div className="card" key={item?.multiverseid}>
-        <img src={item?.imageUrl} />
+        <img src={item?.imageUrl} style={{height: "200px", }}/>
         {item?.name}
       </div>
     );

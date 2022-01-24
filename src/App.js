@@ -7,31 +7,35 @@ import SearchResults from "./Components/Results/SearchResults";
 import NotFound from "./Components/Home/NotFound";
 import { Outlet } from "react-router";
 import BasicSearch from "./Components/Home/BasicSearch";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import AdvancedSearch from "./Components/AdvancedSearch/AdvancedSearch";
 
 function App() {
   const [cards, setCards] = useState([]);
   const [query, setQuery] = useState("");
-  const [type, setType] = useState("")
-  const [colors, setColors] = useState("blue")
+  const [type, setType] = useState("");
+  const [colors, setColors] = useState("");
   const colorList = ["White", "Blue", "Black", "Red", "Green"];
-  const [manaValue, setManaValue] = useState("")
+  const [manaValue, setManaValue] = useState("");
   const [checkedState, setCheckedState] = useState(
     new Array(colorList.length).fill(false)
   );
-  const colorsString = (checkedState[0] === true ? "white," : "")+(checkedState[1] === true ? "blue," : "")+(checkedState[2] === true ? "black," : "")+(checkedState[3] === true ? "red," : "")+(checkedState[4] === true ? "green," : "")
+  const colorsString = 
+    (checkedState[0] === true ? "white," : "") +
+    (checkedState[1] === true ? "blue," : "") +
+    (checkedState[2] === true ? "black," : "") +
+    (checkedState[3] === true ? "red," : "") +
+    (checkedState[4] === true ? "green," : "");
 
-  const queryUrl = `https://api.magicthegathering.io/v1/cards?name=${query}&type=${type}&colors=${colorsString}&cmc=${manaValue}`;
+  // const colorsString2 = colorList.map((item, index) => {return (checkedState[index] === true ? item : "")})
+const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValue}`
+  const queryUrl = `https://api.magicthegathering.io/v1/cards?name=${queryString}`;
 
   return (
     <div>
       <nav>
         <Link to="/">
           <h1>Home</h1>
-        </Link>
-        <Link to="/searchresults">
-          <h1>Search Results</h1>
         </Link>
         <Link to="/advanced">
           <h1>Advanced Search</h1>
@@ -41,13 +45,34 @@ function App() {
         <Route
           path="/"
           element={
-            <Home setCards={setCards} query={query} setQuery={setQuery} queryUrl={queryUrl}/>
+            <Home
+              setCards={setCards}
+              query={query}
+              setQuery={setQuery}
+              queryUrl={queryUrl}
+              queryString = {queryString}
+            />
           }
         />
-                <Route
+
+        <Route
           path="/advanced"
           element={
-            <AdvancedSearch setCards={setCards} queryUrl={queryUrl} query={query} setQuery={setQuery} checkedState = {checkedState} setCheckedState={setCheckedState} setColors={setColors} colorList={colorList}/>
+            <AdvancedSearch
+              setCards={setCards}
+              setColors={setColors}
+              setQuery={setQuery}
+              setType={setType}
+              setManaValue={setManaValue}
+              manaValue={manaValue}
+              setCheckedState={setCheckedState}
+              queryUrl={queryUrl}
+              query={query}
+              queryString={queryString}
+              checkedState={checkedState}
+              colorList={colorList}
+              type={type}
+            />
           }
         />
         <Route
@@ -61,7 +86,6 @@ function App() {
             />
           }
         />
-        
       </Routes>
     </div>
   );

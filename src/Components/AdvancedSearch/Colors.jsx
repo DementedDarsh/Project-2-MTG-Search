@@ -8,7 +8,7 @@ const Colors = (props) => {
         props.setCheckedState(updatedCheckedState)
         // props.setColors(checkedState.map((item, index) => index === position ? colorList[index]: !colorList[index]));
       };
-  return       <span>
+  return       <span className='colors'>
   <h3>Colors</h3>
   <ul className="color-list">
     {props.colorList.map(({ color }, index) => {
@@ -18,6 +18,7 @@ const Colors = (props) => {
             <input
               type="checkbox"
               id={`custom-checkbox-${index}`}
+              style={{marginLeft: "0px"}}
               name={color}
               value={color}
               checked={props.checkedState[index]}
