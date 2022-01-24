@@ -5,16 +5,19 @@ import SubmitButton from "./SubmitButton";
 
 const Home = (props) => {
   return (
-    <div>
-      <BasicSearch
+    <table style={{color: "white", margin: "auto", marginTop: "200px"}}>
+      
+      <thead><h2>(Lousy) Magic: The Gathering card search</h2></thead>
+      <tr><td><BasicSearch
         query={props.query}
         setQuery={props.setQuery}
         cards={props.cards}
         setCards={props.setCards}
         queryUrl={props.queryUrl}
-      />{" "}
-      <SubmitButton queryString={props.queryString} />
-    </div>
+      /></td>{" "}<td>
+      <SubmitButton queryString={props.queryString} /></td></tr>
+    <tr><i>Example search terms: Bear, Aurelia, Zombie</i></tr>
+    </table>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {} from "react-router";
-import { NavLink, Outlet, useSearchParams, useParams } from "react-router-dom";
+import { NavLink, Outlet, useSearchParams, useParams, Link } from "react-router-dom";
+import Card from "./Card";
 
 const SearchResults = (props) => {
   const { search } = useParams;
@@ -36,7 +37,7 @@ console.log(search)
   const results = props.cards.map((item) => {
     return (
       <tbody style={{border: "2px solid black"}} key={item?.multiverseid}>
-      <td style={{textAlign: "center", border: "1px solid black"}}><img src={item?.imageUrl} style={{width: "200px", objectFit: "contain"}}/></td>
+      <td style={{textAlign: "center", border: "1px solid black"}}><Link to={"/searchresults/card/" + item?.name}><img src={item?.imageUrl} style={{width: "200px", objectFit: "contain"}}/></Link></td>
       <td style={{textAlign: "center", border: "1px solid black"}}>{item?.name}</td>
       <td style={{textAlign: "center", border: "1px solid black"}}>{item?.colors.join(", ")}</td>
       <td style={{textAlign: "center", border: "1px solid black"}}>{item?.cmc}</td>
@@ -56,6 +57,7 @@ console.log(search)
     <th style={{border: "2px solid black", textAlign: "center"}}>Color(s)</th>
     <th style={{border: "2px solid black", textAlign: "center"}}>Mana Value</th>
   </thead>{results}</table></div>;
+  
 };
 
 export default SearchResults;

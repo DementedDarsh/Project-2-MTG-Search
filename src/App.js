@@ -9,6 +9,7 @@ import { Outlet } from "react-router";
 import BasicSearch from "./Components/Home/BasicSearch";
 import { useState, createContext } from "react";
 import AdvancedSearch from "./Components/AdvancedSearch/AdvancedSearch";
+import { Card } from "react-bootstrap";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -20,7 +21,7 @@ function App() {
   const [checkedState, setCheckedState] = useState(
     new Array(colorList.length).fill(false)
   );
-  const colorsString = 
+  const colorsString =
     (checkedState[0] === true ? "white," : "") +
     (checkedState[1] === true ? "blue," : "") +
     (checkedState[2] === true ? "black," : "") +
@@ -28,17 +29,17 @@ function App() {
     (checkedState[4] === true ? "green," : "");
 
   // const colorsString2 = colorList.map((item, index) => {return (checkedState[index] === true ? item : "")})
-const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValue}`
+  const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValue}`;
   const queryUrl = `https://api.magicthegathering.io/v1/cards?name=${queryString}`;
 
   return (
     <div>
       <nav>
         <Link to="/">
-          <h1 style={{display: "inline-block", width: "300px"}}>Home</h1>
+          <h1 style={{ display: "inline-block", width: "300px" }}>Home</h1>
         </Link>
-         <Link to="/advanced">
-         <h1 style={{display: "inline-block"}}>Advanced Search</h1>
+        <Link to="/advanced">
+          <h1 style={{ display: "inline-block" }}>Advanced Search</h1>
         </Link>
       </nav>
       <Routes>
@@ -50,7 +51,7 @@ const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValu
               query={query}
               setQuery={setQuery}
               queryUrl={queryUrl}
-              queryString = {queryString}
+              queryString={queryString}
             />
           }
         />
@@ -86,6 +87,7 @@ const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValu
             />
           }
         />
+        <Route path="/searchresults/card/:card" element={<Card />} />
       </Routes>
     </div>
   );

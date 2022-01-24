@@ -19,7 +19,8 @@ const AdvancedSearch = (props) => {
               setCards={props.setCards}
               queryUrl={props.queryUrl}
               queryString={props.queryString}
-            />
+            /><br />
+            <i>Example search terms: Bear, Aurelia, Zombie</i>
           </td>
           <td>
             Mana Value:
