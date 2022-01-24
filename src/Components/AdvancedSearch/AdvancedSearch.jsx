@@ -27,8 +27,9 @@ const AdvancedSearch = (props) => {
               manaValue={props.manaValue}
               setManaValue={props.setManaValue}
             />
-            <SubmitButton queryString={props.queryString} />
+            
           </td>
+          <td><SubmitButton queryString={props.queryString} /></td>
         </thead>
         <tbody>
           <tr>
