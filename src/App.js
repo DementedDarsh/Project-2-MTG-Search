@@ -8,7 +8,7 @@ import NotFound from "./Components/Home/NotFound";
 import { Outlet } from "react-router";
 import BasicSearch from "./Components/Home/BasicSearch";
 import { useState } from "react";
-import AdvancedSearch from "./Components/Home/AdvancedSearch";
+import AdvancedSearch from "./Components/AdvancedSearch/AdvancedSearch";
 
 function App() {
   const [cards, setCards] = useState([]);
