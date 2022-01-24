@@ -35,10 +35,10 @@ const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValu
     <div>
       <nav>
         <Link to="/">
-          <h1>Home</h1>
+          <h1 style={{display: "inline-block", width: "300px"}}>Home</h1>
         </Link>
-        <Link to="/advanced">
-          <h1>Advanced Search</h1>
+         <Link to="/advanced">
+         <h1 style={{display: "inline-block"}}>Advanced Search</h1>
         </Link>
       </nav>
       <Routes>

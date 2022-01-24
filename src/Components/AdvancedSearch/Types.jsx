@@ -20,7 +20,7 @@ const Types = (props) => {
   };
 
   return (
-    <span>
+    <span style={{marginTop: "-800px"}}>
       <DropdownButton
         alignright="true"
         title={props.type != "" ? props.type : "Select a type"}

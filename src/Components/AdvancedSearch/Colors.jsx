@@ -13,12 +13,12 @@ const Colors = (props) => {
   <ul className="color-list">
     {props.colorList.map(({ color }, index) => {
       return (
-        <li key={index}>
+        <li key={index} style={{listStyleType: "none"}}>
           <div className="color-list-item">
             <input
               type="checkbox"
               id={`custom-checkbox-${index}`}
-              style={{marginLeft: "0px"}}
+              style={{marginLeft: "-30px"}}
               name={color}
               value={color}
               checked={props.checkedState[index]}
