@@ -30,7 +30,7 @@ function App() {
 
   // const colorsString2 = colorList.map((item, index) => {return (checkedState[index] === true ? item : "")})
   const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValue}`;
-  const queryUrl = `https://api.magicthegathering.io/v1/cards?name=${queryString}`;
+  let queryUrl = `https://api.magicthegathering.io/v1/cards?name=${queryString}`;
 
   return (
     <div>
