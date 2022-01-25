@@ -9,7 +9,7 @@ import { Outlet } from "react-router";
 import BasicSearch from "./Components/Home/BasicSearch";
 import { useState, createContext } from "react";
 import AdvancedSearch from "./Components/AdvancedSearch/AdvancedSearch";
-import { Card } from "react-bootstrap";
+import Card from "./Components/Results/Card";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -87,7 +87,8 @@ function App() {
             />
           }
         />
-        <Route path="/searchresults/card/:card" element={<Card />} />
+        <Route path="/searchresults/card/:id" element={<Card />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );

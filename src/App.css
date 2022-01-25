@@ -41,3 +41,7 @@ th, h1, h2 {
 th {
   font-size: larger;
 }
+
+.rulings {
+  font-style: italic;
+}

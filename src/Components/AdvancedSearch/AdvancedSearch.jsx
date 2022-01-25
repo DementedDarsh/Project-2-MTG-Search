@@ -8,29 +8,34 @@ import Types from "./Types";
 const AdvancedSearch = (props) => {
   return (
     <div>
-      <table style={{width: "60%", margin: "auto", marginTop: "100px"}}>
+      <table style={{ width: "60%", margin: "auto", marginTop: "100px" }}>
         <thead>
+          <tr>
+            <td>
+              Card name:
+              <BasicSearch
+                query={props.query}
+                setQuery={props.setQuery}
+                cards={props.cards}
+                setCards={props.setCards}
+                queryUrl={props.queryUrl}
+                queryString={props.queryString}
+              />
+              <br />
+              <i>Example search terms: Bear, Aurelia, Zombie</i>
+            </td>
+            <td>
+              Mana Value:
+              <ManaValue
+                manaValue={props.manaValue}
+                setManaValue={props.setManaValue}
+              /><br />
+              <i>E.g. 1, 4</i>
+            </td>
+          
           <td>
-            Card name:
-            <BasicSearch
-              query={props.query}
-              setQuery={props.setQuery}
-              cards={props.cards}
-              setCards={props.setCards}
-              queryUrl={props.queryUrl}
-              queryString={props.queryString}
-            /><br />
-            <i>Example search terms: Bear, Aurelia, Zombie</i>
-          </td>
-          <td>
-            Mana Value:
-            <ManaValue
-              manaValue={props.manaValue}
-              setManaValue={props.setManaValue}
-            />
-            
-          </td>
-          <td><SubmitButton queryString={props.queryString} /></td>
+            <SubmitButton queryString={props.queryString} />
+          </td></tr>
         </thead>
         <tbody>
           <tr>
@@ -47,7 +52,7 @@ const AdvancedSearch = (props) => {
                 setColors={props.setColors}
               />
             </td>
-            <td style={{marginTop: "-800px"}}>
+            <td style={{ marginTop: "-800px" }}>
               <Types
                 setType={props.setType}
                 type={props.type}
@@ -59,7 +64,7 @@ const AdvancedSearch = (props) => {
       </table>
 
       {/* <span className="App"> */}
-        {/* <div>
+      {/* <div>
         Card name: 
         <BasicSearch
           query={props.query}
@@ -72,7 +77,7 @@ const AdvancedSearch = (props) => {
         <ManaValue manaValue={props.manaValue} setManaValue={props.setManaValue}/>
          <SubmitButton queryString={props.queryString} />
       </div> */}
-        {/* <span className="colors" style={{ display: "inline-block" }}>
+      {/* <span className="colors" style={{ display: "inline-block" }}>
           <Colors
             colorList={props.colorList}
             setCards={props.setCards}

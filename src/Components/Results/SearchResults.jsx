@@ -23,13 +23,15 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
       .then((response) => response.json())
       .then((data) => {
         setGetStatus("Completed");
-        props.setCards([
+        props.setCards(
+          [
           ...new Map(
             data.cards
               .filter(filterNoImage)
               .map((item) => [item["name"], item])
           ).values(),
-        ]);
+        ]
+        );
       })
       .catch((error) => {
         setGetStatus("Error");
@@ -38,13 +40,13 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
   };
   useEffect(() => {
     makeApiCall();
-  }, []);
+  }, [url]);
 
   const results = props.cards.map((item) => {
     return (
       <tr className="item" style={{ border: "2px solid black" }} key={item?.multiverseid}>
         <td style={{ textAlign: "center", border: "1px solid black" }}>
-          <Link to={"/searchresults/card/" + item?.name}>
+        <Link to={"/searchresults/card/" + item.id}>
             <img
               src={item?.imageUrl}
               style={{ width: "200px", objectFit: "contain" }}
@@ -71,7 +73,7 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
 
   return (
     <div>
-      <table className="sortable" style={{ width: "100%" }}>
+      <table style={{ width: "100%" }}>
         <thead style={{ border: "2px solid black" }}><tr>
           <th
             style={{
