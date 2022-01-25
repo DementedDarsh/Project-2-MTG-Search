@@ -22,7 +22,6 @@ const AdvancedSearch = (props) => {
                 queryString={props.queryString}
               />
               <br />
-              <i>Example search terms: Bear, Aurelia, Zombie</i>
             </td>
             <td>
               Mana Value:
@@ -30,7 +29,6 @@ const AdvancedSearch = (props) => {
                 manaValue={props.manaValue}
                 setManaValue={props.setManaValue}
               /><br />
-              <i>E.g. 1, 4</i>
             </td>
           
           <td>

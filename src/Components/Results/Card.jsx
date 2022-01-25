@@ -38,9 +38,13 @@ const Card = (props) => {
   const pt =
     card.type?.includes("Creature") === true
       ? `Power/Toughness: ${power}/${toughness}`
-      : "Bye";
+      : "";
+
+const pending = getStatus === "Pending" ? "Card Loading" : ""
 
   return (
+      <>
+      <h2>{pending}</h2>
     <table style={{width: "80%"}}>
       <thead>
         <tr>
@@ -48,7 +52,7 @@ const Card = (props) => {
             <img src={card.imageUrl} />
           </td>
           <td>
-            {card.name} {card.manaCost}
+            <h2>{card.name}</h2>{card.manaCost}
           </td>
         </tr>
         <tr>
@@ -65,7 +69,7 @@ const Card = (props) => {
         </tr>
         {rulings}
       </thead>
-    </table>
+    </table></>
   );
 };
 

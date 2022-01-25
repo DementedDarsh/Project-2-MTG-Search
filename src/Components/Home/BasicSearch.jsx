@@ -15,7 +15,7 @@ const BasicSearch = (props) => {
     <span>
       <input
         type="text"
-        placeholder="Enter a Card Name..."
+        placeholder="Enter a search term... e.g. Bear, Aurelia, Mountain"
         value={props.query}
         onChange={handleSearchInput}
         style={{width: "400px"}}

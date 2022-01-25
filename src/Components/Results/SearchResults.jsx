@@ -70,9 +70,11 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
       // </div>
     );
   });
-
+  const pending = getStatus === "Pending" ? "Cards Loading" : ""
+  const noMatch = props.cards?.length === 0 && getStatus === "Completed" ? "No matches found" : ""
   return (
     <div>
+      <h2>{pending}<br />{noMatch}</h2>
       <table style={{ width: "100%" }}>
         <thead style={{ border: "2px solid black" }}><tr>
           <th

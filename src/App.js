@@ -21,14 +21,15 @@ function App() {
   const [checkedState, setCheckedState] = useState(
     new Array(colorList.length).fill(false)
   );
-  const colorsString =
-    (checkedState[0] === true ? "white," : "") +
-    (checkedState[1] === true ? "blue," : "") +
-    (checkedState[2] === true ? "black," : "") +
-    (checkedState[3] === true ? "red," : "") +
-    (checkedState[4] === true ? "green," : "");
+  // const colorsString =
+  //   (checkedState[0] === true ? "white," : "") +
+  //   (checkedState[1] === true ? "blue," : "") +
+  //   (checkedState[2] === true ? "black," : "") +
+  //   (checkedState[3] === true ? "red," : "") +
+  //   (checkedState[4] === true ? "green," : "");
 
-  // const colorsString2 = colorList.map((item, index) => {return (checkedState[index] === true ? item : "")})
+  const colorsString = colorList.map((item, index) => {return (checkedState[index] === true ? item+"," : "")}).join("")
+
   const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValue}`;
   let queryUrl = `https://api.magicthegathering.io/v1/cards?name=${queryString}`;
 
