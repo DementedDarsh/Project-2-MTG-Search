@@ -5,6 +5,7 @@ import { Dropdown } from "react-bootstrap";
 
 const Types = (props) => {
   const typeList = [
+      "",
     "Artifact",
     "Creature",
     "Land",

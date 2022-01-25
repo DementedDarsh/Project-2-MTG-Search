@@ -11,7 +11,7 @@ const AdvancedSearch = (props) => {
       <table style={{ width: "60%", margin: "auto", marginTop: "100px" }}>
         <thead>
           <tr>
-            <td>
+            <td style={{width: "70%"}}>
               Card name:
               <BasicSearch
                 query={props.query}

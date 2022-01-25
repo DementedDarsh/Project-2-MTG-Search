@@ -32,12 +32,17 @@ function App() {
 
   const queryString = `${query}&type=${type}&colors=${colorsString}&cmc=${manaValue}`;
   let queryUrl = `https://api.magicthegathering.io/v1/cards?name=${queryString}`;
+    const clearStates = () => {
+      setQuery("");
+      setType("");
+      setManaValue("");
+    }
 
   return (
     <div>
       <nav>
         <Link to="/">
-          <h1 style={{ display: "inline-block", width: "300px" }}>Home</h1>
+          <h1 onClick={clearStates} style={{ display: "inline-block", width: "300px" }}>Home</h1>
         </Link>
         <Link to="/advanced">
           <h1 style={{ display: "inline-block" }}>Advanced Search</h1>

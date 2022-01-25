@@ -8,7 +8,7 @@ const Home = (props) => {
     <table style={{ color: "white", margin: "auto", marginTop: "200px" }}>
       <tbody>
         <tr>
-          <td colSpan={2}><h2>(Not so Lousy) Magic: The Gathering card search</h2></td>
+          <td colSpan={2}><h2>(Kind of Okay) Magic: The Gathering card search</h2></td>
         </tr>
         <tr>
           <td>
@@ -22,11 +22,6 @@ const Home = (props) => {
           </td>
           <td>
             <SubmitButton queryString={props.queryString} />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <i>Example search terms: Bear, Aurelia, Zombie</i>
           </td>
         </tr>
       </tbody>
