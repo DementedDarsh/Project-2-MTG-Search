@@ -42,7 +42,7 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
 
   const results = props.cards.map((item) => {
     return (
-      <tbody style={{ border: "2px solid black" }} key={item?.multiverseid}>
+      <tr className="item" style={{ border: "2px solid black" }} key={item?.multiverseid}>
         <td style={{ textAlign: "center", border: "1px solid black" }}>
           <Link to={"/searchresults/card/" + item?.name}>
             <img
@@ -60,7 +60,7 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
         <td style={{ textAlign: "center", border: "1px solid black" }}>
           {item?.cmc}
         </td>
-      </tbody>
+      </tr>
 
       // <div className="card" key={item?.multiverseid}>
       //   <img src={item?.imageUrl} />
@@ -71,8 +71,8 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
 
   return (
     <div>
-      <table style={{ width: "100%" }}>
-        <thead style={{ border: "2px solid black" }}>
+      <table className="sortable" style={{ width: "100%" }}>
+        <thead style={{ border: "2px solid black" }}><tr>
           <th
             style={{
               border: "2px solid black",
@@ -90,9 +90,10 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
           </th>
           <th style={{ border: "2px solid black", textAlign: "center" }}>
             Mana Value
-          </th>
+          </th></tr>
         </thead>
-        {results}
+        <tbody>
+        {results}</tbody>
       </table>
     </div>
   );

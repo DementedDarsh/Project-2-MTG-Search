@@ -18,6 +18,7 @@ const BasicSearch = (props) => {
         placeholder="Enter a Card Name..."
         value={props.query}
         onChange={handleSearchInput}
+        style={{width: "400px"}}
       />
     </span>
   );
