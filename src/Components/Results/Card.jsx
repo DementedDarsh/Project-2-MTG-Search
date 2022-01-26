@@ -26,6 +26,7 @@ const Card = (props) => {
   }, [url]);
   const power = card.power;
   const toughness = card.toughness;
+
   const rulings = card.rulings?.map((item, index) => {
     return (
       <tr key={index} style={{border: "1px solid white"}}>
@@ -36,7 +37,7 @@ const Card = (props) => {
     );
   });
   const pt =
-    card.type?.includes("Creature") === true
+    card.power != undefined
       ? `Power/Toughness: ${power}/${toughness}`
       : "";
 

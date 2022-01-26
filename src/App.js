@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Test from "./Test";
+import Test from "./Components/Home/Test";
 import Home from "./Components/Home/Home";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import SearchResults from "./Components/Results/SearchResults";
@@ -10,6 +10,7 @@ import BasicSearch from "./Components/Home/BasicSearch";
 import { useState, createContext } from "react";
 import AdvancedSearch from "./Components/AdvancedSearch/AdvancedSearch";
 import Card from "./Components/Results/Card";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -40,14 +41,15 @@ function App() {
 
   return (
     <div>
-      <nav>
-        <Link to="/">
-          <h1 onClick={clearStates} style={{ display: "inline-block", width: "300px" }}>Home</h1>
-        </Link>
-        <Link to="/advanced">
-          <h1 style={{ display: "inline-block" }}>Advanced Search</h1>
-        </Link>
-      </nav>
+  <Navbar bg="dark" variant="dark">
+    <Container>
+    <Navbar.Brand>Magic: The Gathering Card Search</Navbar.Brand>
+    <Nav className="me-auto">
+      <Nav.Link href="/">Home</Nav.Link>
+      <Nav.Link href="/advanced">Advanced Search</Nav.Link>
+    </Nav>
+    </Container>
+  </Navbar>
       <Routes>
         <Route
           path="/"
@@ -95,6 +97,7 @@ function App() {
         />
         <Route path="/searchresults/card/:id" element={<Card />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
     </div>
   );

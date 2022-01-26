@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form } from "react-bootstrap";
 import { useSearchParams, Outlet, Route, Routes, Link } from "react-router-dom";
 import SubmitButton from "./SubmitButton";
 
@@ -13,7 +14,7 @@ const BasicSearch = (props) => {
 
   return (
     <span>
-      <input
+      <Form.Control
         type="text"
         placeholder="Enter a search term... e.g. Bear, Aurelia, Mountain"
         value={props.query}

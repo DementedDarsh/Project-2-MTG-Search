@@ -5,7 +5,6 @@ import { Dropdown } from "react-bootstrap";
 
 const Types = (props) => {
   const typeList = [
-      "",
     "Artifact",
     "Creature",
     "Land",
@@ -28,6 +27,7 @@ const Types = (props) => {
         id="dropdown-menu-align-right"
         onSelect={handleSelect}
       >
+          <Dropdown.Item key="" eventKey="">Any Type</Dropdown.Item>
         {typeList.map((item) => {
           return <Dropdown.Item key={item} eventKey={item}>{item}</Dropdown.Item>;
         })}
