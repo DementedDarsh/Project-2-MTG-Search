@@ -46,7 +46,7 @@ const pending = getStatus === "Pending" ? "Card Loading" : ""
   return (
       <>
       <h2>{pending}</h2>
-    <table style={{width: "80%"}}>
+    <table style={{width: "80%", marginTop: "60px"}}>
       <thead>
         <tr>
           <td rowSpan="5">{card.hasOwnProperty('imageUrl') || getStatus === "Pending" ? <img src={card.imageUrl} /> : <h2>Image not Found</h2>}

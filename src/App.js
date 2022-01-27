@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div>
-  <Navbar bg="dark" variant="dark">
+  <Navbar bg="dark" variant="dark" style={{position: "fixed", width: "100%", top: "0"}}>
     <Container>
     <Navbar.Brand>Magic: The Gathering Card Search</Navbar.Brand>
     <Nav className="me-auto">
@@ -56,7 +56,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Home
+            <Home 
               setCards={setCards}
               query={query}
               setQuery={setQuery}

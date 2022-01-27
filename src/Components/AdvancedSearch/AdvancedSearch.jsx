@@ -8,7 +8,7 @@ import Types from "./Types";
 const AdvancedSearch = (props) => {
   return (
     <div>
-      <table style={{ width: "60%", margin: "auto", marginTop: "100px" }}>
+      <table style={{ width: "60%", margin: "auto", marginTop: "160px" }}>
         <thead>
           <tr>
             <td style={{width: "70%"}}>

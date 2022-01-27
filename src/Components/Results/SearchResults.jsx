@@ -12,8 +12,9 @@ import Card from "./Card";
 const SearchResults = (props) => {
   const params = useParams();
   const [getStatus, setGetStatus] = useState("");
-  const manaFilter = () =>
-    props.setCards(props.cards.filter((item) => item.cmc < 4));
+  const manaFilter = (e) =>{
+  
+    props.setCards(props.cards.filter((item) => item.cmc < 4));}
   const filterNoImage = (item) => {
     return item.hasOwnProperty("imageUrl");
   };
@@ -81,7 +82,7 @@ const SearchResults = (props) => {
       ? "No matches found"
       : "";
   return (
-    <div>
+    <div style={{marginTop: "60px"}}>
       <h2>
         {pending}
         <br />
@@ -97,7 +98,8 @@ const SearchResults = (props) => {
                 width: "200px",
               }}
             >
-              Card Image <br />(Click on image for card details)
+              Card Image <br />
+              (Click on image for card details)
             </th>
             <th style={{ border: "2px solid black", textAlign: "center" }}>
               Name
@@ -111,6 +113,7 @@ const SearchResults = (props) => {
             <th style={{ border: "2px solid black", textAlign: "center" }}>
               Mana Value <br />
               <button onClick={manaFilter}>Remove High CMC cards</button>
+
             </th>
           </tr>
         </thead>

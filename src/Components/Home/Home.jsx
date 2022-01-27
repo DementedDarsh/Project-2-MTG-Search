@@ -5,7 +5,7 @@ import SubmitButton from "./SubmitButton";
 
 const Home = (props) => {
   return (
-    <table style={{ color: "white", margin: "auto", marginTop: "200px" }}>
+    <table style={{ color: "white", margin: "auto", marginTop: "260px" }}>
       <tbody>
         <tr>
           <td colSpan={2}><h2>(Kind of Okay) Magic: The Gathering card search</h2></td>
