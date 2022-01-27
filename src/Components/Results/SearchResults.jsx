@@ -97,11 +97,11 @@ const SearchResults = (props) => {
                 width: "200px",
               }}
             >
-              Card Image
+              Card Image <br />(Click on image for card details)
             </th>
             <th style={{ border: "2px solid black", textAlign: "center" }}>
               Name
-            </th>{" "}
+            </th>
             <th style={{ border: "2px solid black", textAlign: "center" }}>
               Type
             </th>

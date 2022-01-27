@@ -11,6 +11,7 @@ import { useState, createContext } from "react";
 import AdvancedSearch from "./Components/AdvancedSearch/AdvancedSearch";
 import Card from "./Components/Results/Card";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import RandomCard from "./Components/Results/RandomCard";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -47,6 +48,7 @@ function App() {
     <Nav className="me-auto">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/advanced">Advanced Search</Nav.Link>
+      <Nav.Link href="/random">Random Card Search</Nav.Link>
     </Nav>
     </Container>
   </Navbar>
@@ -97,6 +99,7 @@ function App() {
         />
         <Route path="/searchresults/card/:id" element={<Card />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/random" element={<RandomCard />} />
         {/* <Route path="/test" element={<Test />} /> */}
       </Routes>
     </div>
