@@ -11,8 +11,8 @@ const Test = () => {
     ["a", "a"],
     ["a", "a", "a"],
   ];
-
-const list = AoA.map((item, index)=>{return(<div key={index}><h1>{item.map((item) => {<span>Hi</span>})}</h1></div>)})
+const inline = (element) => element.map((item) => {return(<span>Hi</span>)})
+const list = AoA.map((item, index)=>{return(<div key={index}><h1>{inline(item)}</h1></div>)})
 
   useEffect(() => {
 

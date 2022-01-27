@@ -97,7 +97,7 @@ function App() {
         />
         <Route path="/searchresults/card/:id" element={<Card />} />
         <Route path="/*" element={<NotFound />} />
-        <Route path="/test" element={<Test />} />
+        {/* <Route path="/test" element={<Test />} /> */}
       </Routes>
     </div>
   );

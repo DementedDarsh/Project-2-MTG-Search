@@ -12,10 +12,12 @@ import Card from "./Card";
 const SearchResults = (props) => {
   const params = useParams();
   const [getStatus, setGetStatus] = useState("");
+  const manaFilter = () =>
+    props.setCards(props.cards.filter((item) => item.cmc < 4));
   const filterNoImage = (item) => {
     return item.hasOwnProperty("imageUrl");
   };
-const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
+  const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`;
   const makeApiCall = () => {
     console.log(url);
     setGetStatus("Pending");
@@ -23,15 +25,11 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
       .then((response) => response.json())
       .then((data) => {
         setGetStatus("Completed");
-        props.setCards(
-          [
+        props.setCards([
           ...new Map(
-            data.cards
-              .filter(filterNoImage)
-              .map((item) => [item["name"], item])
+            data.cards.filter(filterNoImage).map((item) => [item["name"], item])
           ).values(),
-        ]
-        );
+        ]);
       })
       .catch((error) => {
         setGetStatus("Error");
@@ -44,9 +42,13 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
 
   const results = props.cards.map((item) => {
     return (
-      <tr className="item" style={{ border: "2px solid black" }} key={item?.multiverseid}>
+      <tr
+        className="item"
+        style={{ border: "2px solid black" }}
+        key={item?.multiverseid}
+      >
         <td style={{ textAlign: "center", border: "1px solid black" }}>
-        <Link to={"/searchresults/card/" + item.id}>
+          <Link to={"/searchresults/card/" + item.id}>
             <img
               src={item?.imageUrl}
               style={{ width: "200px", objectFit: "contain" }}
@@ -55,6 +57,9 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
         </td>
         <td style={{ textAlign: "center", border: "1px solid black" }}>
           {item?.name}
+        </td>
+        <td style={{ textAlign: "center", border: "1px solid black" }}>
+          {item?.type}
         </td>
         <td style={{ textAlign: "center", border: "1px solid black" }}>
           {item?.colors?.join(", ")}
@@ -70,34 +75,46 @@ const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`
       // </div>
     );
   });
-  const pending = getStatus === "Pending" ? "Cards Loading" : ""
-  const noMatch = props.cards?.length === 0 && getStatus === "Completed" ? "No matches found" : ""
+  const pending = getStatus === "Pending" ? "Cards Loading" : "";
+  const noMatch =
+    props.cards?.length === 0 && getStatus === "Completed"
+      ? "No matches found"
+      : "";
   return (
     <div>
-      <h2>{pending}<br />{noMatch}</h2>
+      <h2>
+        {pending}
+        <br />
+        {noMatch}
+      </h2>
       <table style={{ width: "100%" }}>
-        <thead style={{ border: "2px solid black" }}><tr>
-          <th
-            style={{
-              border: "2px solid black",
-              textAlign: "center",
-              width: "200px",
-            }}
-          >
-            Card Image
-          </th>
-          <th style={{ border: "2px solid black", textAlign: "center" }}>
-            Card Name
-          </th>
-          <th style={{ border: "2px solid black", textAlign: "center" }}>
-            Color(s)
-          </th>
-          <th style={{ border: "2px solid black", textAlign: "center" }}>
-            Mana Value
-          </th></tr>
+        <thead style={{ border: "2px solid black" }}>
+          <tr>
+            <th
+              style={{
+                border: "2px solid black",
+                textAlign: "center",
+                width: "200px",
+              }}
+            >
+              Card Image
+            </th>
+            <th style={{ border: "2px solid black", textAlign: "center" }}>
+              Name
+            </th>{" "}
+            <th style={{ border: "2px solid black", textAlign: "center" }}>
+              Type
+            </th>
+            <th style={{ border: "2px solid black", textAlign: "center" }}>
+              Color(s)
+            </th>
+            <th style={{ border: "2px solid black", textAlign: "center" }}>
+              Mana Value <br />
+              <button onClick={manaFilter}>Remove High CMC cards</button>
+            </th>
+          </tr>
         </thead>
-        <tbody>
-        {results}</tbody>
+        <tbody>{results}</tbody>
       </table>
     </div>
   );
