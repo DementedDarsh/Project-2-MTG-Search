@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Card from "./Card";
 
-const SearchResults = (props) => {
+const ManaRocks = (props) => {
   const params = useParams();
   const [getStatus, setGetStatus] = useState("");
   const manaFilter = (e) =>{
@@ -18,7 +18,7 @@ const SearchResults = (props) => {
   const filterNoImage = (item) => {
     return item.hasOwnProperty("imageUrl");
   };
-  const url = `https://api.magicthegathering.io/v1/cards?name=${params.search}`;
+  const url = `https://api.magicthegathering.io/v1/cards?text={t}:%20add%20one%20mana%7C{t}:%20add%20two%20mana&type=artifact`;
   const makeApiCall = () => {
     console.log(url);
     setGetStatus("Pending");
@@ -63,7 +63,7 @@ const SearchResults = (props) => {
           {item?.type}
         </td>
         <td style={{ textAlign: "center", border: "1px solid black" }}>
-          {item?.colors != undefined ? item?.colors?.join(", ") : "Colorless"}
+        {item?.colors != undefined ? item?.colors?.join(", ") : "Colorless"}
         </td>
         <td style={{ textAlign: "center", border: "1px solid black" }}>
           {item?.cmc}
@@ -123,4 +123,4 @@ const SearchResults = (props) => {
   );
 };
 
-export default SearchResults;
+export default ManaRocks;

@@ -12,6 +12,7 @@ import AdvancedSearch from "./Components/AdvancedSearch/AdvancedSearch";
 import Card from "./Components/Results/Card";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import RandomCard from "./Components/Results/RandomCard";
+import ManaRocks from "./Components/Results/ManaRocks";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -49,6 +50,7 @@ function App() {
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/advanced">Advanced Search</Nav.Link>
       <Nav.Link href="/random">Random Card Search</Nav.Link>
+      <Nav.Link href="/manarocks">Mana Rocks</Nav.Link>
     </Nav>
     </Container>
   </Navbar>
@@ -90,6 +92,17 @@ function App() {
           path="/searchresults/:search"
           element={
             <SearchResults
+              cards={cards}
+              setCards={setCards}
+              queryUrl={queryUrl}
+              setQuery={setQuery}
+            />
+          }
+        />
+                <Route
+          path="/manarocks"
+          element={
+            <ManaRocks
               cards={cards}
               setCards={setCards}
               queryUrl={queryUrl}
